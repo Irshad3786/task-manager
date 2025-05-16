@@ -8,6 +8,8 @@ import TaskRoute from './routes/TaskRoue.js'
 import AllTasks from './routes/AllTasks.js'
 import UpdateTaskRoute from './routes/UpdateTaskRoute.js'
 import DeleteTaskRoute from './routes/DeleteTaskRoute.js'
+import UserTaskRoute from './routes/UserTaskRoute.js'
+import AllProjectsRoute from './routes/AllProjectsRoute.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser';
 
@@ -44,11 +46,13 @@ app.use(express.json())
 
 app.use('/CreateAccount',CreateAccount)
 app.use('/SignIn',SignInAccount)
-app.use('/Dashboard',Verificationstart)
+app.use('/GetVerify',Verificationstart)
 app.use('/Task',TaskRoute)
 app.use('/AllTasks',AllTasks)
 app.use('/UpdateTask',UpdateTaskRoute)
 app.use('/DeleteTask',DeleteTaskRoute)
+app.use('/AddProject',UserTaskRoute)
+app.use('/GetAllProjects',AllProjectsRoute)
 
 
 const PORT = process.env.PORT || 5000;

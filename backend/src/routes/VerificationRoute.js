@@ -5,6 +5,6 @@ const router = express.Router()
 
 
 
-router.route('/').post(VerifyToken)
+router.route('/').get(VerifyToken)
 
 export default router

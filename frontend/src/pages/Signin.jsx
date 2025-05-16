@@ -15,7 +15,7 @@ function Signin() {
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/SignIn`,{Email,Password},{ withCredentials: true }).then((res)=>{
       if(res.data.message === "Login Successful"){
         setLoaderState(true)
-        Navigate('/Dashboard')
+        Navigate('/AddProject')
       }
       
     })

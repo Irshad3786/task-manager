@@ -25,7 +25,7 @@ function Dashboard() {
    
 
    const AllTaskDis =()=>{
-      axios.post(`${import.meta.env.VITE_BACKEND_URL}/Dashboard`,{}, { withCredentials: true })
+      axios.get(`${import.meta.env.VITE_BACKEND_URL}/GetVerify`, { withCredentials: true })
       .then((res)=>{
           setEmail(res.data.data.email);
       })
