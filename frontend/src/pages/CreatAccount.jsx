@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 function CreateAccount() {
 
   const [Name , setName] = useState("")
+   const [Country , setCountry] = useState("")
   const [Email , setEmail] = useState("")
   const [Password , setPassword] = useState("")
   const [ConfPassword , setConfPassword] = useState("")
@@ -30,7 +31,7 @@ function CreateAccount() {
       toast.warn("Conform Password Dont't Match")
     }else{
       setLoaderState(true)
-      axios.post(`${import.meta.env.VITE_BACKEND_URL}/CreateAccount`,{Name,Email,Password})
+      axios.post(`${import.meta.env.VITE_BACKEND_URL}/CreateAccount`,{Name,Email,Password,Country})
       .then((res)=>{ 
         toast.success("Register Successful")
         setLoaderState(false)
@@ -60,6 +61,7 @@ function CreateAccount() {
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24"><path fill="#fff" fill-rule="evenodd" d="m3.343 12l7.071 7.071L9 20.485l-7.778-7.778a1 1 0 0 1 0-1.414L9 3.515l1.414 1.414z"/></svg>Back</button></div>
             {!LoaderState && (<div className=' w-[100%] h-[450px] flex flex-col items-center justify-center gap-5 md:h-[600px]'>
                 <input type="text" className='w-[80%] h-12 rounded-2xl bg-[#006BFF] font-Afacad p-4 md:w-[25%] text-white placeholder-white' placeholder='Enter Name ' value={Name}  onChange={(e)=>setName(e.target.value)}/>
+                <input type="text" className='w-[80%] h-12 rounded-2xl bg-[#006BFF] font-Afacad p-4 md:w-[25%] text-white placeholder-white' placeholder='Enter Country ' value={Country}  onChange={(e)=>setCountry(e.target.value)}/>
                 <input type="email" className='w-[80%] h-12 rounded-2xl bg-[#006BFF] font-Afacad p-4 md:w-[25%] text-white placeholder-white' placeholder='Enter Email ' value={Email} onChange={(e)=>setEmail(e.target.value)} />
                 <input type="password" className='w-[80%] h-12 rounded-2xl bg-[#006BFF] font-Afacad p-4 md:w-[25%] text-white placeholder-white' placeholder='Enter Password ' value={Password} onChange={(e)=>setPassword(e.target.value)} />
                 <input type="password" className='w-[80%] h-12 rounded-2xl bg-[#006BFF] font-Afacad p-4 md:w-[25%] text-white placeholder-white' placeholder='Enter Confirm Password ' value={ConfPassword} onChange={(e)=>setConfPassword(e.target.value)} />

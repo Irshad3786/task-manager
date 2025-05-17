@@ -4,6 +4,7 @@ const CreateAccountSchema = new mongoose.Schema({
     Name:String,
     Email:String,
     Password:String,
+    Country:String,
     timestamp: {
         type: Date,
         default: Date.now

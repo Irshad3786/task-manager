@@ -144,13 +144,13 @@ function Dashboard() {
     
     
     const logout = ()=>{
-      Cookies.remove('Authtoken',{ path: '/' });
-      window.location.href = '/'
+      Cookies.remove('Authtoken',{ path: '/AllProjects' });
+      window.location.href = '/AllProjects'
     }
 
   return (
     <div>
-      <div className='w-screen min-h-screen bg-[#FFF100]'>
+      <div className='w-[100%] min-h-screen bg-[#FFF100] '>
 
           
 
@@ -162,11 +162,16 @@ function Dashboard() {
          
 
             <div className='p-4 font-semibold'>
-              <h1 className='bg-black text-white p-2 w-fit text-sm md:text-lg flex justify-center items-center gap-2 rounded-md font-Afacad cursor-pointer' onClick={logout}>Logout <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+              <h1 className='bg-black text-white p-2 w-fit text-sm md:text-lg flex justify-center items-center gap-2 rounded-md font-Afacad cursor-pointer' onClick={logout}>Back <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                 <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17.625c-.074 1.852-1.617 3.424-3.684 3.374c-.481-.012-1.076-.18-2.265-.515c-2.861-.807-5.345-2.164-5.941-5.203C3 14.724 3 14.095 3 12.837v-1.674c0-1.257 0-1.886.11-2.445c.596-3.038 3.08-4.395 5.941-5.202c1.19-.335 1.784-.503 2.265-.515c2.067-.05 3.61 1.522 3.684 3.374M21 12H10m11 0c0-.7-1.994-2.008-2.5-2.5M21 12c0 .7-1.994 2.008-2.5 2.5" color="#fff" />
               </svg></h1>
             </div>
-          {!AllTaskBut && (<div>
+
+            <h1 className='text-center font-Afacad font-bold text-2xl mt-5 mb-5'>
+              Add Task
+            </h1>
+
+          {!AllTaskBut && (<div className=''>
 
             <div className='flex flex-col items-center justify-center w-[100%] h-96 md:h-[75%] gap-4'>
               <div><input type="text" placeholder='Enter Tittle' className='p-4 bg-[#006BFF] text-white font-Afacad placeholder:text-white placeholder:font-Afacad w-60 font-medium md:w-96' value={Tittle} onChange={(e)=>{setTittle(e.target.value)}}/></div>
