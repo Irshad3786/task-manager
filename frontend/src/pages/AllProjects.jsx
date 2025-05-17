@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import axios from 'axios'
+import Cookies from 'js-cookie';
 
 function AllProjects() {
     const Navigation =  useNavigate()
@@ -46,10 +47,20 @@ function AllProjects() {
   },[Email, Navigation])
 
   const Tasks = (key,Tittle,id)=>{
-    Navigation("/Dashboard")
-    console.log(Email,key,Tittle,id);
+    Navigation("/Dashboard",{
+        state: {
+        Tittle: Tittle,
+      }
+    })
+   
     
   }
+
+
+  const logout = ()=>{
+        Cookies.remove('Authtoken',{ path: '/' });
+        window.location.href = '/'
+      }
 
 
   return (
@@ -60,7 +71,11 @@ function AllProjects() {
                <Link to='/AllProjects'><div><h1 className='bg-[#006BFF] flex justify-center items-center p-3 gap-2 rounded-lg text-sm font-Afacad  md:text-xl cursor-pointer' >All Projects <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="#120505" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="#120505"><path d="M3.5 9.368c0-3.473 0-5.21 1.025-6.289S7.2 2 10.5 2h3c3.3 0 4.95 0 5.975 1.08C20.5 4.157 20.5 5.894 20.5 9.367v5.264c0 3.473 0 5.21-1.025 6.289S16.8 22 13.5 22h-3c-3.3 0-4.95 0-5.975-1.08C3.5 19.843 3.5 18.106 3.5 14.633z"/><path d="m8 2l.082.493c.2 1.197.3 1.796.72 2.152C9.22 5 9.827 5 11.041 5h1.917c1.213 0 1.82 0 2.24-.355c.42-.356.52-.955.719-2.152L16 2M8 16h4m-4-5h8"/></g></svg></h1></div></Link>
             </div>
             
-            
+            <div className='p-4 font-semibold'>
+              <h1 className='bg-black text-white p-2 w-fit text-sm md:text-lg flex justify-center items-center gap-2 rounded-md font-Afacad cursor-pointer' onClick={logout}>Logout <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 17.625c-.074 1.852-1.617 3.424-3.684 3.374c-.481-.012-1.076-.18-2.265-.515c-2.861-.807-5.345-2.164-5.941-5.203C3 14.724 3 14.095 3 12.837v-1.674c0-1.257 0-1.886.11-2.445c.596-3.038 3.08-4.395 5.941-5.202c1.19-.335 1.784-.503 2.265-.515c2.067-.05 3.61 1.522 3.684 3.374M21 12H10m11 0c0-.7-1.994-2.008-2.5-2.5M21 12c0 .7-1.994 2.008-2.5 2.5" color="#fff" />
+              </svg></h1>
+            </div>
             {
                 AllProjects.map((data,key)=>(
                     <div className='flex justify-center items-center mt-6' key={key}>

@@ -25,7 +25,7 @@ const UserTask = new mongoose.Schema({
         type: String,
         required: true,
         },
-        Process:{
+        Status:{
         type: String,
         required: true,
         },

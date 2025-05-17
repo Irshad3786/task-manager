@@ -1,10 +1,18 @@
-import CreateTaskmodel from '../dbmodels/Task.js';
+import UserTaskmodel from "../dbmodels/UserTask.js";
 
 export const AllTasksControler =async(req,res)=>{
-    const {Email} = req.body
+    const {Email,Projecttittle} = req.body
     try {
-        const tasks = await CreateTaskmodel.find({Email})
-        res.status(200).json({message:"All Tasks" , data : tasks})
+        const User = await UserTaskmodel.findOne({Email})
+
+        const project = User.Projects.find(proj => proj.Tittle === Projecttittle.Tittle);
+
+        if (!project) {
+         return res.status(404).json({ message: "Project not found" });
+        }else{
+            return res.status(200).json(project.Tasks);
+        }
+        
 
     } catch (error) {
         console.log("error at" , error);
