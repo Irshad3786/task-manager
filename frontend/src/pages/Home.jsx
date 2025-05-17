@@ -62,7 +62,7 @@ function Home() {
             </div>
 
             <div >
-                <h1 className='font-Afacad text-6xl md:text-7xl'>Master your tasks, <br /> master your life.</h1>
+                <h1 className='font-Afacad text-6xl md:text-7xl'>Master your taskssss, <br /> master your life.</h1>
             </div>
         </div>
         
