@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from "mongoose";
-import CreateAccount from './src/routes/CreateAccountRoute.js';
+import CreateAccountRoute from "./src/routes/CreateAccountRoute.js";
 import SignInAccount from './src/routes/SignIn.js'
 import Verificationstart from './src/routes/VerificationRoute.js'
 import TaskRoute from './src/routes/TaskRoue.js'
@@ -44,7 +44,7 @@ mongoose.connect(process.env.MONGOURL)
 
 app.use(express.json())
 
-app.use('/CreateAccount',CreateAccount)
+app.use('/CreateAccount',CreateAccountRoute)
 app.use('/SignIn',SignInAccount)
 app.use('/GetVerify',Verificationstart)
 app.use('/Task',TaskRoute)
