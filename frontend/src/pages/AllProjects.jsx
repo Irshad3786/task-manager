@@ -14,7 +14,7 @@ function AllProjects() {
     const [LoaderState , setLoaderState] = useState(false)
 
     useEffect(()=>{
-          setLoaderState(true)
+          
           axios.get(`${import.meta.env.VITE_BACKEND_URL}/GetVerify`, { withCredentials: true })
           .then((res)=>{
               setEmail(res.data.data.email);
@@ -31,6 +31,7 @@ function AllProjects() {
 
     useEffect(()=>{
         if(Email){
+           setLoaderState(true)
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/GetAllProjects`,{Email}, { withCredentials: true })
             .then((res)=>{
                 setLoaderState(false)
