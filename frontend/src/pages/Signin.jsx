@@ -12,10 +12,12 @@ function Signin() {
   const [LoaderState , setLoaderState] = useState(false)
 
   const submit = ()=>{
+    setLoaderState(true)
     axios.post(`${import.meta.env.VITE_BACKEND_URL}/SignIn`,{Email,Password},{ withCredentials: true }).then((res)=>{
       if(res.data.message === "Login Successful"){
-        setLoaderState(true)
+        
         Navigate('/AddProject')
+        setLoaderState(false)
       }
       
     })

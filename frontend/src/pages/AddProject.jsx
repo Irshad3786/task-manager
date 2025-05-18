@@ -29,7 +29,8 @@ function AddProject() {
           
   },[Navigation])
 
-   const AddingData = ()=>{
+
+    const AddingData = ()=>{
     console.log(Tittle , Description);
     console.log(Email);
 
