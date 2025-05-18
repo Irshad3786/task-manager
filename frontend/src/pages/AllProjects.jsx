@@ -26,6 +26,7 @@ function AllProjects() {
           })
               
     },[Navigation])
+    
 
     useEffect(()=>{
         if(Email){

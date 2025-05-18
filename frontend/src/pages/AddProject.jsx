@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import {  toast } from 'react-toastify';
 import { Link } from 'react-router-dom'
+import { Audio } from 'react-loader-spinner'
 import Cookies from 'js-cookie';
 
 function AddProject() {
@@ -11,14 +12,15 @@ function AddProject() {
    const [Tittle,setTittle] = useState("")
    const [Description,setDescription] = useState("")
    const [Email,setEmail] = useState("")
-
+    const [LoaderState , setLoaderState] = useState(false)
 
 
    useEffect(()=>{
-  
+      setLoaderState(true)
       axios.get(`${import.meta.env.VITE_BACKEND_URL}/GetVerify`, { withCredentials: true })
       .then((res)=>{
           setEmail(res.data.data.email);
+          setLoaderState(false)
       })
       .catch((error)=>{
           console.log("error" ,error);
@@ -56,6 +58,19 @@ function AddProject() {
 
   return (
     <div className='bg-[#FFF100] w-[100%] min-h-screen '>
+      {LoaderState && (<div className=' flex flex-col gap-3 justify-center items-center pt-48'>
+                    <Audio
+                      height="180"
+                      width="180"
+                      radius="19"
+                      color="white"
+                      ariaLabel="loading"
+                      wrapperStyle
+                      wrapperClass
+                      visible={LoaderState}
+                      /> 
+                      <h1 className='font-Afacad text-2xl'>PLEASE WAIT !</h1>              
+                    </div>)}
 
             <div className='flex justify-center font-semibold gap-8 p-4 border-b border-black'>
               <Link to='/AddProject'><div ><h1 className='bg-[#006BFF] font-Afacad flex justify-center items-center p-3 gap-2 rounded-lg text-sm md:text-lg cursor-pointer' >Add Project <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 48 48"><g fill="none" stroke="#120505" stroke-linejoin="round" stroke-width="4"><rect width="36" height="36" x="6" y="6" rx="3"/><path stroke-linecap="round" d="M24 16v16m-8-8h16"/></g></svg></h1></div></Link> 
